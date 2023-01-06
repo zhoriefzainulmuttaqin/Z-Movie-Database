@@ -1,37 +1,81 @@
-$('.search-button').on('click', function () {
-    $.ajax({
-        url: 'http://www.omdbapi.com/?apikey=ed537468&s=' + $('.input-keyword').val(),
-        success: result => { //jika sukses
-            const movies = result.Search;
-            let cards = '';
+// $('.search-button').on('click', function () {
+//     $.ajax({
+//         url: 'http://www.omdbapi.com/?apikey=ed537468&s=' + $('.input-keyword').val(),
+//         success: result => { //jika sukses
+//             const movies = result.Search;
+//             let cards = '';
     
-            movies.forEach(m => {
-                cards += showCards(m);
-            });
-            $('.movie-container').html(cards); //jquery tolong carikan class movie-container, kemudian isikan htmlnya dengan cards
+//             movies.forEach(m => {
+//                 cards += showCards(m);
+//             });
+//             $('.movie-container').html(cards); //jquery tolong carikan class movie-container, kemudian isikan htmlnya dengan cards
     
-            // ketika tombpl detail di klik
+//             // ketika tombpl detail di klik
              
-            $('.modal-detail-button').on('click', function () {
-                $.ajax({
-                    url: 'http://www.omdbapi.com/?apikey=ed537468&i=' + $(this).data('imdbid'),
-                    success: m => {
-                        const movieDetail = showMovieDetail(m);
-                        $('.modal-body').html(movieDetail);               
-                                    },
-                    error: (e) => {
-                        console.log(e.responseText);
-                    }
-                })
-            })
+//             $('.modal-detail-button').on('click', function () {
+//                 $.ajax({
+//                     url: 'http://www.omdbapi.com/?apikey=ed537468&i=' + $(this).data('imdbid'),
+//                     success: m => {
+//                         const movieDetail = showMovieDetail(m);
+//                         $('.modal-body').html(movieDetail);               
+//                                     },
+//                     error: (e) => {
+//                         console.log(e.responseText);
+//                     }
+//                 })
+//             })
     
-        },
-        error: (e) => {
-            console.log(e.responseText);
-        }
+//         },
+//         error: (e) => {
+//             console.log(e.responseText);
+//         }
         
-    });
-});
+//     });
+// });
+
+
+
+// Fetch
+// fetch() = sebuah method pada API javascript untuk mengambil resource dari jaringan, dan mengembalikna promise yang selesai (fullfilled) ketika ada response yang tersedia
+//fetch(resource, init);  //resource = berisikan (url atau request object)
+                          //init = konfigurasi tambahan (object)
+//response hasil dari fetch (property atau method)
+
+
+const searchButton = document.querySelector('.search-button'); //querryselector untuk mengambil satu
+searchButton.addEventListener('click', function() { //menggunakan function biasa untuk ada 'this'
+
+    const inputKeyword = document.querySelector('.input-keyword');
+    fetch('http://www.omdbapi.com/?apikey=ed537468&s=' + inputKeyword.value) //menggunakan fetch harus ada resourcenya (ex: url)
+        .then(response => response.json()) //jika berhasil maka gunakan then 
+        .then(response => {
+            const movies = response.Search;
+            let cards = '';
+            movies.forEach(m => cards += showCards(m));
+            const movieContainer = document.querySelector('.movie-container');
+            movieContainer.innerHTML = cards;
+
+
+            //ketika tombol di klik dan memunculkan modal
+            const modalDetailButton = document.querySelectorAll('.modal-detail-button'); //cari semua modal-detail-button
+            modalDetailButton.forEach(btn => {
+                btn.addEventListener('click', function () { //butuh this jadi pake function biasa
+                    const imdbid = this.dataset.imdbid;
+                    fetch('http://www.omdbapi.com/?apikey=ed537468&i=' + imdbid)
+                        .then(response => response.json())
+                        .then(m => {
+                            const movieDetail = showMovieDetail(m);
+                            const modalBody = document.querySelector('.modal-body');
+                            modalBody.innerHTML = movieDetail;
+                        });
+                });
+            });
+            
+            
+
+            });
+        }); 
+
 
 
 
