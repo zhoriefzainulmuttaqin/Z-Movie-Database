@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+       { 
+        
+        let ditepati = true;
+        const janji1 = new Promise((resolve, reject) => { 
+            if (ditepati) {
+                resolve('Janji telah ditepati!');
+            } else {
+                reject('Ingkar janji!');
+            }
+         });
+
+         janji1
+            .then(response => console.log('OK! : ' + response))
+            .catch(response => console.log('NOT OK! :' + response));
+        
+        }
+
+
+        {
+
+            let ditepati = true;
+            const janji2 = new Promise((resolve, reject) => { 
+                if (ditepati) {
+                    setTimeout(() => {
+                        resolve('Janji telah ditepati!');
+                    }, 2000);
+                } else {
+                    setTimeout(() => {
+                        reject('Ingkar janji!');
+                    }, 2000);                }
+            });
+
+            console.log('mulai');
+
+            janji2
+            .finally(() => console.log('Selelsai menunggu!'))
+            .then(response => console.log('OK!' + response))
+            .catch(response => console.log('NOT OK!' + response));
+            console.log('selesai');
+
+        }
+
+        {
+
+            const film = new Promise((resolve, reject) => { 
+                setTimeout(() => {
+                    resolve([{
+                        judul: 'Avengers',
+                        sutradara: 'Zhorief',
+                        pemeran: 'Hisyam, Fayyaz',
+                    }])
+                }, 1000)
+             });
+
+             const cuaca = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([{
+                        kota: 'Cirebon',
+                        temp: 26,
+                        kondisi: 'hujan'
+                    }]);
+                }, 500); 
+             });
+
+             Promise.all([film, cuaca])
+                .then(response => {
+                    const [film, cuaca] = response;
+                    console.log(film);
+                    console.log(cuaca);
+                });
+        
+            }
+    </script>
+
+</body>
+</html>

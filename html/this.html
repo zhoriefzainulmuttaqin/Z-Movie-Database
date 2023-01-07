@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kata Kunci This</title>
+</head>
+<body>
+<!-- Kata kunci this adalah referensi ke object milik siapa -->
+<!-- Tiap kata kunci this, bisa berbeda beda referensi pemiliknya -->
+<!-- Dalam Object Method, this merupakan referensi ke object pemilik functionnta -->
+<!-- Di global scope, this merupakan referensi ke global object (di browser bisanya window) -->
+<!-- Dalam function, this merupakan referensi ke global object (di browser bisanya window) -->
+<!-- Dalam function dengan strict mode, this adalah undefined -->
+<!-- Dalam event, this merupakan referensi ke element yang menerima evemt -->
+<script>
+
+console.info(this); //this global scope
+
+function sample(){ //this didalam function
+    console.info(this);
+
+    function inner(){ //this didalam inner function
+        console.info(this);
+    }
+    inner();
+}
+sample();
+
+const person = { //this didalam object
+    name: "Zhorief",
+    sayHello: function (name){ //this didalam function dari object person
+        console.info(`Halo ${name} myname is ${this.name}`); //halo budi(param function) myname is zhorief(person.name) 
+    }
+};
+person.sayHello("Budi"); //output bukan budi tapi zhoriefssssssss, karena this mengambil data object, bukan parameter function
+</script>
+
+</body>
+</html>

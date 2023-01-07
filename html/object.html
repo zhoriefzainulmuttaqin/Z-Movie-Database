@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+const orang = {};
+// ubah property / atribute
+orang["Nama"] = "Zhorief"; //menambah object
+orang["alamat"] = "rumah";
+orang["Umur"] = 18;
+console.table(orang);
+
+delete orang["Umur"];
+console.table(orang);
+
+//langsung
+const people = {
+    "nama lengkap": "Syi\'ta Dwi Syufiyani", 
+    alamat: "Indonesia",
+    umur: 18,
+};
+console.table(people);
+
+console.info(`nama: ${people["nama lengkap"]}`);
+console.info(`alamat: ${people.alamat}`);
+console.info(`umur: ${people.umur}`);
+
+
+</script>
+
+</body>
+</html>

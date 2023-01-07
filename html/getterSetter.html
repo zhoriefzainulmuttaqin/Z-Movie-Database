@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter Setter</title>
+</head>
+<body>
+    
+    <!-- Getter dan Setter adalah kemampuan membuat function yg berbeda untuk mengambil data
+    (Getter) dan mengubah data (Setter) pada sebuah property di Objecy -->
+    <!-- Dengan menggunakan Getter dan Setter, kita bisa melakukan hal apapun dalam function sebelum
+    sebuah property di akses atau di ubah, misal menambah validasi dan lain kain -->
+
+<script>
+//Getter
+const person = {
+    firstname: "Zhorief",
+    lastname: "Zainul Muttaqin",
+    get fullname() { //property menjadi function
+        return `${this.firstname} ${this.lastname}`;
+    }
+};
+
+person.firstname = "Syi\'ta";
+console.log(person.fullname);
+
+//Setter
+const namaOrang = {
+    namaAwal: "Zhorief",
+    namaAkhir: "Zainul Muttaqin",
+    get namaLengkap() {
+        return `${this.namaAwal} ${namaAkhir}`;
+    },
+    set namaLengkap(value) {
+        const array = value.split(" ");
+        this.namaAwal = array[0];
+        this.namaAkhir = array[1];
+    }
+};
+
+namaOrang.namaLengkap = "Nadya Assyifa";
+console.table(namaOrang);
+
+namaOrang.namaLengkap = "Syi\'ta Dwi Syufiyani";
+console.table(namaOrang);
+
+namaOrang.namaLengkap = "Eko Khannedy";
+console.table(namaOrang);
+
+
+</script>
+
+</body>
+</html>

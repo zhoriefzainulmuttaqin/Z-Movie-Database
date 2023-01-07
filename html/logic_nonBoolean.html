@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+///OR
+console.info("Hello" || ""); //hello //t x f = t
+console.info("" || []); //[] //f x t = t 
+console.info("0" || "NOL"); //"0" //truthy x truthy = truthy yg pertama
+console.info(0 || null); //null //false x false = false yg terakhir
+
+const person = {
+    firstname: "zhorief",
+    lastname: "Zainul Muttaqin",
+};
+const name = person.firstname || person.lastname;
+console.info(name);
+
+//AND //ngambil falsy
+console.info("Hello" && ""); //t x f = f
+console.info("" && []); //f x t = f
+console.info("AA" && 12); //t x t = t yg terakhir
+console.info("" && undefined); //f x f = f yg pertama
+
+</script>
+
+</body>
+</html>

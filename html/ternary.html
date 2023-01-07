@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+    //operator sederhana if statement
+
+    //jika menggunakan if
+    const nilai = 10;
+    let ucapan;
+
+    if(nilai >= 75){
+        ucapan = "Anda Lulus";
+    } else {
+        ucapan = "Silahkan coba lagi";
+    };
+    document.writeln(ucapan);
+    document.writeln("<br>");
+
+    //jika menggunakan operator ternary
+    ucapan = nilai >= 75 ? "Selamat Anda Lulus" : "Silahkan coba lagi";
+    document.writeln(ucapan);
+    document.writeln("<br>");
+
+    //nullish coalescing operator
+    // nullish adalah null dan undefined
+
+    //tanpa nullish
+    let parameter;
+
+    let data = parameter;
+    if(data === undefined || data === null){
+        data = "Nilai default";
+    };
+    document.writeln(`${data}`);
+    document.writeln("<br>");
+
+    //menggunakan nullish
+    let name;
+    let hasil = name;
+    hasil = name ?? "Hasil Default";
+    document.writeln(`${hasil}`);
+    
+</script>
+
+</body>
+</html>

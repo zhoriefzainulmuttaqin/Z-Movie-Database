@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masalah variable var</title>
+</head>
+<body>
+    
+<!-- alasan var tidak direkomendasikan lagi adalah karena var tidak memiliki block scope (global % local),
+artinya dia tidak mengikat ke local scope yg sebelumnya sudah kita bahas -->
+<!-- karena masalah ini var bisa tidak terprediksi -->
+
+<script>
+
+    let i = 20;
+
+    for (let i = 0; i < 10; i++) { //membuat variable baru dengan scope local (let tau mana global mana local)
+        console.log(`Local ${i}`);
+    }
+    console.log(`Global ${i}`);
+
+
+    var z = 20;
+
+    for (var z = 0; z < 10; z++) { //data global berubah  (var tidak tau mana global mana local)
+        console.log(`Local ${z}`);
+    }
+    console.log(`Global ${z}`);
+
+</script>
+
+</body>
+</html>

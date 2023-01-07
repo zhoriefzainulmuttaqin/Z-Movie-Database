@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    
+<script>
+
+let arrayKosong = [];
+let arrayNama = [
+"Zhorief",
+"Zainul",
+"Muttaqin",
+];
+document.writeln(arrayNama);
+
+const names = [];
+names.push("Zhorief");
+names.push("Zainul", "Muttaqin");
+names.push("Syi\'ta", "Dwi", "Syifiyani"); 
+console.table(names);
+
+names[0] = "Si Tampan"; //ubah index ke 0
+names[5] = "Syufiyani"; //ubah index ke 0
+console.table(names);
+
+names.push(1,2,3,4,5);
+console.table(names);
+//array on array (multidimensional array)
+names.push(["Hello", "World"]);
+console.table(names);
+
+</script>
+
+</body>
+</html>

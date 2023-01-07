@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+const value1 = 1;
+const value2 = "1";
+const sum = value1 + value2; //hasilnya 11 (blm dikonversi)
+
+document.writeln(`<p>${sum} </p>`);
+
+document.writeln(`<p> ${parseInt("1.1")} </p>`); //bilangan pecahan dihiraukan (output jadi bilangan bulat)
+document.writeln(`<p> ${parseFloat("1.1")} </p>`); //dikonvers jadi pecahan
+document.writeln(`<p> ${Number("1.1")} </p>`); //number fleksibel
+
+const A = 1;
+const B = 1;
+const total = A.toString() + B.toString(); //konversi number ke string || "1" + "1" = 11
+document.writeln(`<p> ${total} </p>`);
+
+//contoh NaN
+document.writeln(`<p> ${parseInt("ini angka")} </p>`); 
+document.writeln(`<p> ${parseFloat("1.1zhorief")} </p>`); //hasilnya akan 1.1 karena javascript pintar, ia akan mendeteksi data depannya terlebih dahulu
+document.writeln(`<p> ${Number("1ni angka")} </p>`); //NaN karena number tidak mentolelir
+//operasi NaN
+const nilai1 = Number("salah"); //NaN
+const jumlah = nilai1 + 200;
+document.writeln(`<p> ${jumlah} </p>`); //hasilnya NaN karena NaN dioperasikan akan menghasilkan NaN pula
+
+//mengecek NaN menggunakan isNaN
+document.writeln(`<p> ${isNaN(1)} </p>`); //false, this number
+document.writeln(`<p> ${isNaN("Zhorief")} </p>`); //true, this NaN
+document.writeln(`<p> ${isNaN(NaN)} </p>`); //true, this NaN
+
+
+</script>
+
+</body>
+</html>

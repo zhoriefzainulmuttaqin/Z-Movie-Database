@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+</head>
+<body>
+    
+<script>
+
+let counter = 0; //global scope (bisa diakses dimanapun)
+
+function hitMe() { //hitMe merupakan global scope
+   counter++;  //local scope (tidak bisa diakses dimanapun kecuali lokal)
+}
+hitMe();
+hitMe();
+console.log(counter); //akses global scope
+
+function first(){
+    //local scope
+    let firstVariable = "first";
+}
+function second(){
+    let secondNested = "Second";
+    //local scope
+    let secondVariable = "second";
+    console.log(secondNested); //tidak error karena memanggil scope parent secondNested
+}
+first();
+second();
+
+// console.log(firstVariable); //error karena mengakses local scope
+// console.log(secondVariable); //error karena mengakses local scope
+console.log(first); //tidak error
+
+
+
+
+
+</script>
+
+</body>
+</html>

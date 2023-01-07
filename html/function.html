@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+</head>
+<body>
+    
+<script>
+//membuat function
+function sayHelloWorld() { 
+    document.writeln("<p>Hello World</p>");
+}; //blok function tidak akan bisa dirun kecuali si function tsb dipanggil
+
+//memanggil function 
+sayHelloWorld();
+sayHelloWorld();
+sayHelloWorld(); //bisa berkali kali
+
+
+//function parameter/ argumen
+function sayHello(firstname, lastname) {
+    document.writeln(`<p> Hello ${firstname} ${lastname} </p>`)
+};
+sayHello("Zhorief", "Zainul Muttaqin");
+sayHello("Zainul Muttaqin", " Zhorief");
+
+
+//function return value
+
+function hello(namaAwal, namaAkhir) {
+    const hello = `Halo ${namaAwal} ${namaAkhir}`;
+    return hello;
+};
+
+const result = hello("Ahmad", "Junaedi");
+document.writeln(result);
+
+function getFinalResult(nilai) {
+    if(nilai > 90) {
+        return "A";
+    } else if (value > 80) {
+        return "B";
+    } else if (nilai > 70) {
+        return "C";
+    } else {
+        return "D";
+    }
+}
+const finalResult = getFinalResult(98);
+document.writeln(`<p> Nilainya adalah ${finalResult}</p>`);
+
+function isContains(array, searchValue) {
+    for (const element of array) {
+        if(element === searchValue){
+            return true;
+        }
+    }
+    return false;
+}   
+    const array = [1,232,34,122,445,33,44,343,44];
+    const search = 10;
+    const found = isContains(array, search);
+    document.writeln(`<p> ${found} </p>`);
+
+
+    ///anonymous function
+    const kata = function(nama){
+        document.writeln(`<p> Halo ${nama} </p>`);
+    }
+    kata("zhorief");
+    kata("Zainul");
+
+
+//function dalam function
+function outer(){
+
+    function inner() {
+        document.writeln("inner");
+    }
+    inner();
+    inner();
+}
+outer();
+
+
+//recursive function //function yg memanggil dirinya sendiri
+
+//normal
+function factorial(value){
+    let hasil = 1;
+    for (let i = 1; i <= value; i++) {
+        hasil *= i;
+    }
+    return hasil;
+}
+
+console.log(factorial(5));
+console.log(1*2*3*4*5);
+
+//recursive
+function factorialRecursive(value) {
+    if (value === 1) {
+        return 1;
+    } else {
+        return value * factorialRecursive(value - 1);
+    }
+}
+console.log(factorialRecursive(5));
+// 5 * factorialRecursive(4)
+// 5 * 4 * factorialRecursive(3)
+// 5 * 4 * 3 * factorialRecursive(2)
+// 5 * 4 * 3 * 2 * factorialRecursive(1)
+// 5 * 4 * 3 * 2 * 1
+
+
+//function generator //cuma bisa di iterasi //sifatnya lazy (jika tidak ditarik datanya maka tidak diesksekusi)
+function* createNames() {
+    yield "Zhorief";
+    yield "Zainul"; 
+    yield "Muttaqin";
+
+}
+const names = createNames();
+for ( const name of names) {
+    console.log(name);
+}
+
+function* buatGanjil(value){
+    for(let i = 1; i<= value; i++){
+        if(i % 2 === 1){
+            yield i;
+        }
+    }
+}
+const numbers = buatGanjil(100);
+// for (const number of numbers){
+// console.log(number);
+// }
+//lazy generator (jika dibutuhkan diekseskusi, jika tidak dibutuhkan tidak dieksekusi)
+console.log(numbers.next().value); //butuh 1 kali
+console.log(numbers.next().value); //butuh 2 kali
+console.log(numbers.next().value); //butuh 3 kali
+
+
+//arrow function //pembuatan function lebih sederhana //terfapat limitasi (terbatas)
+//tidak bisa menggunakan fitur arguments object
+//tidak bisa menggunakan functtion generator
+//tidak bisa mengakses this
+//tidak bisa mengakses super
+
+// const katakanHello = (kenal) => {
+//     const katakan = `Hello ${kenal}`;
+//     console.log(katakan);
+// } 
+// katakanHello("Zhorieff");
+
+const katakanHello = (kenal) => console.log(`hello ${kenal}`); //lebih sederhana
+
+// const sum = (first, second) => {
+//     return first + second; //harus menggunakan return
+// }
+const sum = (first, second) => first + second; //lebih sederhananya
+console.log(sum(100,100));
+
+function giveMeName(callback){
+    callback("Zainul Muttaqin");
+}
+
+// giveMeName(function (lengkap) { //anonymouse function
+//     console.log(`Halo ${lengkap}`);
+// })
+
+giveMeName(lengkap => console.log(`halo ${lengkap}`)); //arrow function
+
+
+
+</script>
+
+</body>
+</html>

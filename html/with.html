@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>with statement</title>
+</head>
+<body>
+    
+<script>
+
+//tanpa with statement
+
+const person = {
+    firstname: "Zhorief",
+    middlename: "Zainul",
+    lastname: "Muttaqin",
+};
+document.writeln(person.firstname); 
+document.writeln(person.middlename);
+document.writeln(person.lastname);
+
+document.writeln("<br>")
+//menggunakan with statement
+
+const orang = {
+    namaDepan: "Syi\'ta",
+    namaTengah: "Dwi",
+    namaBelakang: "Syufiyani",
+};
+with (orang) {
+    document.writeln(namaDepan); 
+    document.writeln(namaTengah);
+    document.writeln(namaBelakang);
+};
+
+
+
+
+
+</script>
+
+</body>
+</html>
